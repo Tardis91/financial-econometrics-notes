@@ -6,7 +6,7 @@ Welcome to my collection of quantitative research projects in **financial econom
 
 ## 📊 Projects
 
-### [Stationarity & Unit Root Testing](/financial-econometrics-notes/stationarity)
+### [Stationarity & Unit Root Testing](/stationarity)
 Investigating how to test for stationarity in time series data using ADF and KPSS, and why it matters for model reliability.
 
 ### [ACF and PACF Plots](acf-pacf.md)
