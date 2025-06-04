@@ -4,7 +4,7 @@ This page contains resources and notes from my journey into Financial Econometri
 ## Topics
 
 - [x] Introduction to Time Series
-- [x] ARMA Models
+- [ARMA Models](./arma.md)
 - [ ] GARCH Models
 - [ ] Cointegration
 
