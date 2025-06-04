@@ -1,5 +1,5 @@
 # Welcome to Financial Econometrics Notes
-
+theme: jekyll-theme-minimal
 This page contains resources and notes from my journey into Financial Econometrics.
 
 ## Topics
