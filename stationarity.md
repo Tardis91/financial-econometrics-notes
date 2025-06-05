@@ -26,42 +26,57 @@ You usually want to **transform** non-stationary data into stationary form using
 
 ---
 
-## 📏 How to Test for Stationarity
+## 📉 Deutsche Post Weekly Log Returns
 
-We can use the following tests:
+Below is a sample plot of weekly log returns for Deutsche Post AG:
 
-| Test | Null Hypothesis (H₀) | Stationarity if... |
-|------|----------------------|--------------------|
-| Augmented Dickey–Fuller (ADF) | Series has a unit root (non-stationary) | p-value < 0.05 |
-| KPSS | Series is stationary | p-value > 0.05 |
+![Log Returns](images/deutsche_post_returns_plot.png)
 
-![Log Returns](images/deutsche_post_log_returns_plot.png)
+---
+
+## 🧪 Stationarity Tests
+
+We use the following tests:
+
+| Test | Null Hypothesis (H₀) | Stationary if... |
+|------|----------------------|------------------|
+| ADF  | Has unit root        | p-value < 0.05 ✅ |
+| KPSS | Is stationary        | p-value > 0.05 ✅ |
+
+### Test Results:
+
+**ADF Test**
+- Statistic: `-14.74`
+- p-value: `< 0.001`
+- ✅ Reject H₀ → Likely Stationary
+
+**KPSS Test**
+- Statistic: `0.195`
+- p-value: `> 0.1`
+- ✅ Fail to reject H₀ → Likely Stationary
+
+➡️ *Both tests agree: this series is likely stationary.*
+
+---
+
+## 🔁 Making a Series Stationary (if it isn't)
+
+If your series fails these tests:
+- Apply **log transformation**
+- Apply **differencing**: `returns.diff().dropna()`
+- **Re-test** stationarity afterward
 
 ---
 
 ## 🐍 Python Example
 
-Here’s how to run both ADF and KPSS tests using `statsmodels`.
-
 ```python
-import pandas as pd
 from statsmodels.tsa.stattools import adfuller, kpss
-import matplotlib.pyplot as plt
 
-# Load your time series
-df = pd.read_csv('data/deutsche_post_returns.csv')
-returns = df['log_returns']
-
-# Plot the series
-returns.plot(title='Log Returns')
-plt.show()
-
-# Augmented Dickey-Fuller Test
-adf_result = adfuller(returns.dropna())
-print("ADF Statistic:", adf_result[0])
-print("p-value:", adf_result[1])
+# ADF Test
+adf_result = adfuller(returns)
+print("ADF p-value:", adf_result[1])
 
 # KPSS Test
-kpss_result = kpss(returns.dropna(), regression='c')
-print("KPSS Statistic:", kpss_result[0])
-print("p-value:", kpss_result[1])
+kpss_result = kpss(returns, regression='c')
+print("KPSS p-value:", kpss_result[1])
