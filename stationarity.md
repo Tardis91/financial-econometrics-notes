@@ -35,6 +35,8 @@ We can use the following tests:
 | Augmented Dickey–Fuller (ADF) | Series has a unit root (non-stationary) | p-value < 0.05 |
 | KPSS | Series is stationary | p-value > 0.05 |
 
+![Log Returns](images/deutsche_post_log_returns_plot.png)
+
 ---
 
 ## 🐍 Python Example
